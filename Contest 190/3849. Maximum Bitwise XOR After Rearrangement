@@ -1,0 +1,50 @@
+https://leetcode.com/problems/maximum-bitwise-xor-after-rearrangement/description/
+
+class Solution {
+public:
+    string maximumXor(string s, string t) {
+        int n = s.size();
+        int ones = count(t.begin(), t.end(), '1');
+        int zeros = t.size() - ones;
+        /*int count1 = 0;
+        for (char c : t)
+            if (c == '1')
+                count1++;
+        int count0 = n - count1;
+        */
+        //string result = "";
+        string result(n, '0');
+        for (int i = 0; i < n; i++) {
+           /* if (s[i] == '0') {
+                if (count1 > 0) {
+                    result += '1';
+                    count1--;
+                } else {
+                    result += '0';
+                    count0--;
+                }
+                */
+        if (s[i] == '0' && ones > 0) {
+            result[i] = '1'; 
+            ones--;
+        } 
+        else if (s[i] == '1' && zeros > 0) {
+            result[i] = '1';
+             zeros--;
+        }
+        /*
+            } else {
+                if (count0 > 0) {
+                    result += '1';
+                    count0--;
+                } else {
+                    result += '0';
+                    count1--;
+                }
+            }
+            */
+        }
+        return result;
+    }
+};
+
