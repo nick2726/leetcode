@@ -1,0 +1,22 @@
+https://leetcode.com/problems/trim-trailing-vowels/description/
+
+
+class Solution {
+public:
+    string trimTrailingVowels(string s) {
+        while (!s.empty() && string("aeiou").find(s.back()) != string::npos)
+            s.pop_back();
+        return s;
+    }
+};
+
+
+This line checks if the last character of s is a vowel:
+string("aeiou").find(s.back()) != string::npos
+Breaking it down:
+
+s.back() → gets the last character of the string
+string("aeiou").find(...) → searches for that character inside "aeiou"
+string::npos → a special constant meaning "not found" (essentially -1)
+!= string::npos → means "was found", i.e., the character IS a vowel
+
