@@ -1,0 +1,19 @@
+https://leetcode.com/problems/smallest-pair-with-different-frequencies/description/
+
+class Solution {
+public:
+    vector<int> minDistinctFreqPair(vector<int>& nums) {
+        map<int, int> freq;
+        for (int num : nums)
+            freq[num]++;
+        vector<pair<int, int>> vals(freq.begin(), freq.end());
+        int n = vals.size();
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (vals[i].second != vals[j].second)
+                    return {vals[i].first, vals[j].first};
+            }
+        }
+        return {-1, -1};
+    }
+};
